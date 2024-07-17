@@ -19,7 +19,7 @@
 
                 <div class="menu-item p-2">
                     <a class="menu-link menu-center {{ request()->routeIs('clients.*') ? 'active bg-gray-200' : '' }}"
-                       href="{{ route('dashboard') }}" data-bs-trigger="hover"
+                       href="{{ route('clients.index') }}" data-bs-trigger="hover"
                        data-bs-dismiss="click" data-bs-placement="right">
                         <span class="menu-icon me-0"><i class="fa fa-users fs-2x"></i></span>
                         <span class="menu-title text-gray-700">Clients</span>
@@ -28,7 +28,7 @@
 
                 <div class="menu-item p-2">
                     <a class="menu-link menu-center {{ request()->routeIs('products.*') ? 'active bg-gray-200' : '' }}"
-                       href="{{ route('dashboard') }}" data-bs-trigger="hover"
+                       href="{{ route('products.index') }}" data-bs-trigger="hover"
                        data-bs-dismiss="click" data-bs-placement="right">
                         <span class="menu-icon me-0"><i class="fa fa-boxes fs-2x"></i></span>
                         <span class="menu-title text-gray-700">Produits</span>

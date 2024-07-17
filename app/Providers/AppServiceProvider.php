@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -47,5 +48,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Model::shouldBeStrict(!app()->isProduction());
+        Paginator::useBootstrap();
     }
 }
