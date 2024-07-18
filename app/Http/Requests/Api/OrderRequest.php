@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,10 +11,5 @@ class OrderRequest extends FormRequest
         return [
             'reference' => ['required'],
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return true;
     }
 }

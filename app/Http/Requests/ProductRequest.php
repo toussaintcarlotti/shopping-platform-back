@@ -15,9 +15,4 @@ class ProductRequest extends FormRequest
             'color' => ['nullable'],
         ];
     }
-
-    public function authorize(): bool
-    {
-        return true;
-    }
 }
