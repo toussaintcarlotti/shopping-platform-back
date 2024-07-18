@@ -33,6 +33,8 @@ class OrderController extends Controller
             ]);
         }
 
+        auth()->user()->cart->delete();
+
         return response()->json($order, 201);
     }
 }
