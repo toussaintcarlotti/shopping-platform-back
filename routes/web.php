@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:web')->group(function () {
-    Route::view('/', 'dashboard')->name('dashboard');
+    Route::get('/', DashboardController::class)->name('dashboard');
 
     Route::view('profile', 'profile.edit')->name('profile.edit');
 

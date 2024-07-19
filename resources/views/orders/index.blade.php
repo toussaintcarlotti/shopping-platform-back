@@ -25,7 +25,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="3" class="text-center bg-light-warning">
+                        <td colspan="4" class="text-center bg-light-warning">
                             {{ __("Aucune commande") }}
                         </td>
                     </tr>

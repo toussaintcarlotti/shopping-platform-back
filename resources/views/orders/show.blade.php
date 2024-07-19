@@ -35,8 +35,8 @@
                     <thead>
                     <tr class="fw-bolder fs-6 text-gray-800">
                         <th>Produit</th>
+                        <th class="text-center">Quantité</th>
                         <th>Prix unitaire</th>
-                        <th>Quantité</th>
                         <th>Total</th>
                     </tr>
                     </thead>
@@ -44,8 +44,8 @@
                     @foreach($products as $product)
                         <tr class="align-middle {{ $product->pivot->deleted ? 'table-danger' : '' }}">
                             <td>{{ $product->name }}</td>
+                            <td class="text-center">{{ $product->pivot->quantity }}</td>
                             <td>{{ Number::currency($product->price, in: 'EUR', locale:'fr') }}</td>
-                            <td>{{ $product->pivot->quantity }}</td>
                             <td>{{ Number::currency($product->price * $product->pivot->quantity, in: 'EUR', locale:'fr') }}</td>
                         </tr>
                     @endforeach
