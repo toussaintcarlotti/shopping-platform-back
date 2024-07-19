@@ -9,7 +9,7 @@ class CartController extends Controller
 {
     public function show(): JsonResponse
     {
-        $cart = auth()->user()->cart->load('products');
+        $cart = auth()->user()->cart?->load('products');
         return response()->json($cart);
     }
 
