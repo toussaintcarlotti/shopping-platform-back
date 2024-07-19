@@ -9,17 +9,18 @@ use Illuminate\Http\JsonResponse;
 
 class CartProductController extends Controller
 {
-    public function store(CartRequest $request): JsonResponse
+    public function store(CartRequest $request, Product $product): JsonResponse
     {
         $cart = auth()->user()->cart()->firstOrCreate();
-        if ($cart->products()->where('product_id', $request->product_id)->exists()) {
-            $cart->products()->updateExistingPivot($request->product_id, [
-                'quantity' => $cart->products()->find($request->product_id)->pivot->quantity + $request->quantity,
+        if ($cart->products()->where('product_id', $product->id)->exists()) {
+            $cart->products()->updateExistingPivot($product->id, [
+                'quantity' => $cart->products()->find($product->id)->pivot->quantity + $request->quantity,
             ]);
         } else {
-            $cart->products()->attach($request->product_id, ['quantity' => $request->quantity]);
+            $cart->products()->attach($product->id, ['quantity' => $request->quantity]);
         }
 
+        $cart->load('products');
         return response()->json($cart, 201);
     }
 
@@ -27,6 +28,7 @@ class CartProductController extends Controller
     {
         $cart = auth()->user()->cart;
         $cart->products()->where('product_id', $product)->updateExistingPivot($product, ['deleted' => true]);
+        $cart->load('products');
         return response()->json($cart);
     }
 }

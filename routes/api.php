@@ -7,21 +7,22 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CartProductController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ProductOverviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('register', RegisterController::class);
 Route::post('login', LoginController::class);
 Route::get('products', [ProductController::class, 'index']);
+Route::get('products/overview', ProductOverviewController::class);
 
 Route::middleware('auth:sanctum')->group(function () {
-
     Route::controller(CartController::class)->prefix('cart')->group(function () {
-        Route::get('', 'index');
-        Route::delete('delete', 'destroy');
+        Route::get('', 'show');
+        Route::delete('', 'destroy');
 
-        Route::controller(CartProductController::class)->prefix('product')->group(function () {
+        Route::controller(CartProductController::class)->prefix('product/{product}')->group(function () {
             Route::post('', 'store');
-            Route::delete('{product}', 'destroy');
+            Route::delete('', 'destroy');
         });
     });
 

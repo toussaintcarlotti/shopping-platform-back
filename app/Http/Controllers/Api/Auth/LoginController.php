@@ -12,12 +12,12 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (!auth()->guard('client')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
         auth()->guard('client')->user()->tokens()->delete();
         $token = auth()->guard('client')->user()->createToken('auth-token')->plainTextToken;
 
-        return response()->json(['token' => $token]);
+        return response()->json(['token' => $token, 'user' => auth()->guard('client')->user()]);
     }
 }

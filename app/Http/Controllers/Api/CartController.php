@@ -7,9 +7,9 @@ use Illuminate\Http\JsonResponse;
 
 class CartController extends Controller
 {
-    public function index(): JsonResponse
+    public function show(): JsonResponse
     {
-        $cart = auth()->user()->cart->products;
+        $cart = auth()->user()->cart->load('products');
         return response()->json($cart);
     }
 

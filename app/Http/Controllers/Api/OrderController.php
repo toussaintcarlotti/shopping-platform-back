@@ -21,8 +21,13 @@ class OrderController extends Controller
 
     public function store(): JsonResponse
     {
+        if (!auth()->user()->cart || auth()->user()->cart->products()->count() === 0) {
+            return response()->json(['error' => 'Cart empty'], 400);
+        }
+
         $order = auth()->user()->orders()->create([
             'reference' => uniqid('ORD-', true),
+            'amount' => auth()->user()->cart->total,
         ]);
 
         foreach (auth()->user()->cart->products(all: true)->get() as $product) {

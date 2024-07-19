@@ -10,7 +10,8 @@ class Order extends Model
 {
     protected $fillable = [
         'client_id',
-        'reference'
+        'reference',
+        'amount',
     ];
 
     /******************************
