@@ -24,7 +24,7 @@ class Order extends Model
 
     public function products($all = false): BelongsToMany
     {
-        $query = $this->belongsToMany(Product::class)->withPivot(['quantity', 'deleted']);
+        $query = $this->belongsToMany(Product::class)->withPivot(['quantity', 'deleted'])->orderBy('deleted');
         if (!$all) {
             $query->wherePivot('deleted', false);
         }

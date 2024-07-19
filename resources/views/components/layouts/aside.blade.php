@@ -37,7 +37,7 @@
 
                 <div class="menu-item p-2">
                     <a class="menu-link menu-center {{ request()->routeIs('orders.*') ? 'active bg-gray-200' : '' }}"
-                       href="{{ route('dashboard') }}" data-bs-trigger="hover"
+                       href="{{ route('orders.index') }}" data-bs-trigger="hover"
                        data-bs-dismiss="click" data-bs-placement="right">
                         <span class="menu-icon me-0"><i class="fa fa-shipping-fast fs-2x"></i></span>
                         <span class="menu-title text-gray-700">Commandes</span>
