@@ -24,7 +24,7 @@ Configurer les éléments nécessaires à l'envoi de mail dans le fichier `.env`
 Ajouter l'url du front dans le fichier `.env` à la clé `ALLOWED_ORIGINS` pour autoriser les requêtes CORS :
 
 ```bash
-ALLOWED_ORIGINS='http://localhost:8080'
+ALLOWED_ORIGINS='http://localhost:5174'
 ```
 
 ### Installation des dépendances
